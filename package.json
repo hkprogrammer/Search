@@ -1,0 +1,27 @@
+{
+  "name": "itemsearch",
+  "version": "1.0.0",
+  "description": "Shopping Item Serach Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkprogrammer/ItemSearch.git"
+  },
+  "keywords": [
+    "Shopping",
+    "Item",
+    "Search",
+    "Express",
+    "JS",
+    "Node"
+  ],
+  "author": "Hitoki Kidahashi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hkprogrammer/ItemSearch/issues"
+  },
+  "homepage": "https://github.com/hkprogrammer/ItemSearch#readme"
+}
