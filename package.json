@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/hkprogrammer/ItemSearch/issues"
   },
-  "homepage": "https://github.com/hkprogrammer/ItemSearch#readme"
+  "homepage": "https://github.com/hkprogrammer/ItemSearch#readme",
+  "dependencies": {
+    "walmart": "0.0.4"
+  }
 }
