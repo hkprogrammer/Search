@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/hkprogrammer/ItemSearch#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "walmart": "0.0.4"
   }
 }
