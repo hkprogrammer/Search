@@ -1,0 +1,12 @@
+{
+	"Items" : {
+		"Pen" : {
+			"Price" : 3.99,
+			"Rating": 5
+		},
+		"Pencil" : {
+			"Price" : 0.99,
+			"Rating": 5
+		}
+	}
+}
