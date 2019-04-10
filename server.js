@@ -16,7 +16,7 @@ var consoleLog = JSON.parse(fs.readFileSync(consoleLogFile)); //parsing json obj
 var testingData = JSON.parse(fs.readFileSync(testingSample)); //parsing json object into useable JSON/arrays
 
 
-consoleLog[getTime()] = "Renew Connection";
+consoleLog[getTime()] = "Started Server";
 
 function consoleLogFunc(a){
 	let stringedFormat = JSON.stringify(consoleLog, null, 2);
