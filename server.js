@@ -147,7 +147,8 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 							f += nn + ": " + vv + ", ";
 						}
 					}
-					f += "<br>";
+					//f += "<br>";
+					f += "\n";
 
 				}
 				output = f;
