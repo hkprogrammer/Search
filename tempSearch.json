@@ -1,0 +1,12 @@
+{
+	
+	"Premium Ballpoint Pen" : {
+		"Price" : "5.99",
+		"Thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51X9oIx70kL._SX425_.jpg"
+	},
+	"#2 Pencil" : {
+		"Price" : "0.50",
+		"Thumbnail": "https://www.zebrapen.com/wp-content/uploads/2013/12/classic.jpg"
+	}
+	
+}

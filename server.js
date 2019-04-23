@@ -2,7 +2,7 @@
 const apiKey = ""; //API key declearation
 const consoleLogFile = 'CL.json';
 const testingSample = 'testingSample.json';
-
+const tempSearchFile = 'tempSearch.json';
 
 var walmart = require('walmart')(apiKey);
 var express = require("express");
@@ -14,11 +14,12 @@ var fs = require('fs')
 
 var consoleLog = JSON.parse(fs.readFileSync(consoleLogFile)); //parsing json object into useable JSON/arrays
 var testingData = JSON.parse(fs.readFileSync(testingSample)); //parsing json object into useable JSON/arrays
-
+var tempSearch;
 
 consoleLog[getTime()] = "Started Server";
 
-function consoleLogFunc(a){
+function consoleLogFunc(a = false, b, c = ""){
+	consoleLog[getTime()] = "Requested " + b + "; Returned " + c;
 	let stringedFormat = JSON.stringify(consoleLog, null, 2);
 	console.log(stringedFormat);
 	fs.writeFileSync(consoleLogFile, stringedFormat, (err)=>{
@@ -60,10 +61,10 @@ app.get('/CL/:name', (req,res)=>{
 	try{
 		
 
-		let format = getTime();
-		consoleLog[format] = name + " has connected to Search!'s back-end database";
+		// let format = getTime();
+		// consoleLog[format] = name + " has connected to Search!'s back-end database";
 
-		let SF = consoleLogFunc(true);
+		let SF = consoleLogFunc(true, "Connection", name);
 		res.send(SF);
 	}
 	catch(err){
@@ -166,10 +167,11 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 	catch(e){
 		console.log(e);
 		consoleLog[getTime()] = "INVALID NUMBER ERROR:" + e; 
-		consoleLogFunc();
+		consoleLogFunc(false, "INVALID NUMBER", e);
 		output = "error";
 
 	}
+	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
 	response.send(output);
 
 
@@ -181,6 +183,68 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 
 
 });
+
+//titles
+app.get('/titleNum',(req,res)=>{
+
+	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
+	let namelit = Object.keys(tempSearch);
+	//consoleLog[getTime()] = "Requested TitleNumber" + "; Returned " + namelit.length;
+	consoleLogFunc(false, "Title Number", namelit.length);
+	res.send(String(namelit.length));
+});
+
+app.get('/titleNum/:Num', (req,res)=>{
+	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
+	let data = req.params;
+	let num = parseInt(data.Num) - 1; //make sure the data is in Int format
+
+	let namelit = Object.keys(tempSearch);
+	let tValue = namelit[num];
+	consoleLogFunc(false, "Title",tValue);
+	res.send(tValue);
+
+
+});
+
+//prices
+app.get('/priceNum/:Num?', (req,res)=>{
+	let data = req.params;
+	let num = parseInt(data.Num) - 1; //make sure the data is in Int format
+	let tPrice = getPrice(num)
+	res.send(tPrice);
+
+
+});
+function getPrice(a){
+	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
+	
+
+	let pricelit = Object.keys(tempSearch);
+	let tValue = pricelit[a];
+	let tPrice = tempSearch[tValue].Price;
+	consoleLogFunc(false, "Price", tPrice);
+	return tPrice
+}
+
+//thumbnails
+app.get('/thumbnails/:Num?', (req,res)=>{
+	let data = req.params;
+	let num = parseInt(data.Num) - 1; //make sure the data is in Int format
+	let tThumb = getThumb(num)
+	res.send(tThumb);
+
+
+});
+function getThumb(a){
+	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
+	let thumblit = Object.keys(tempSearch);
+	let tValue = thumblit[a];
+	let tThumb = tempSearch[tValue].Thumbnail;
+	consoleLogFunc(false, "Thumbnails", tThumb);
+	return tThumb
+}
+
 
 app.get('/sampleDB', (req,res)=>{
 
