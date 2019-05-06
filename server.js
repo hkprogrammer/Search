@@ -1,7 +1,7 @@
 //files:
 const apiKey = ""; //API key declearation
 const consoleLogFile = 'CL.json';
-const testingSample = 'testingSample.json';
+const testingSample = 'Database.json';
 const tempSearchFile = 'tempSearch.json';
 
 var walmart = require('walmart')(apiKey);
@@ -14,11 +14,11 @@ var fs = require('fs')
 
 var consoleLog = JSON.parse(fs.readFileSync(consoleLogFile)); //parsing json object into useable JSON/arrays
 var testingData = JSON.parse(fs.readFileSync(testingSample)); //parsing json object into useable JSON/arrays
-var tempSearch;
+var tempSearch = JSON.parse(fs.readFileSync(tempSearchFile));;
 
 consoleLog[getTime()] = "Started Server";
 
-function consoleLogFunc(a = false, b, c = ""){
+function consoleLogFunc(b, c = "",a = false){
 	consoleLog[getTime()] = "Requested " + b + "; Returned " + c;
 	let stringedFormat = JSON.stringify(consoleLog, null, 2);
 	console.log(stringedFormat);
@@ -64,7 +64,7 @@ app.get('/CL/:name', (req,res)=>{
 		// let format = getTime();
 		// consoleLog[format] = name + " has connected to Search!'s back-end database";
 
-		let SF = consoleLogFunc(true, "Connection", name);
+		let SF = consoleLogFunc( "Connection", name, true);
 		res.send(SF);
 	}
 	catch(err){
@@ -109,6 +109,9 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 	};
 	var output = "";
 
+	
+
+
 	try{
 		parsedNumber = parseInt(number);
 		console.log(parsedNumber);
@@ -129,31 +132,86 @@ app.get('/Search/:Num/:Item', (request,response) =>{
  				var Items = "Items";
 				var tempDB = testingData[Items];
 
-				var tempDBkeys = Object.keys(tempDB);
-				var f = "";
-				for(let i = 0; i < tempDBkeys.length; i++){
-					let n = tempDBkeys[i];
-					let v = tempDB[n];
-					let vkeys = Object.keys(v);
+				// var tempDBkeys = Object.keys(tempDB);
+				// var f = "";
+				// for(let i = 0; i < tempDBkeys.length; i++){
+				// 	let n = tempDBkeys[i];
+				// 	let v = tempDB[n];
+				// 	let vkeys = Object.keys(v);
 					
-					f += n + " - ";
-					for(let ii = 0; ii < vkeys.length; ii++){
-						let nn = vkeys[ii];
-						let vv = v[nn];
+				// 	f += n + " - ";
+				// 	for(let ii = 0; ii < vkeys.length; ii++){
+				// 		let nn = vkeys[ii];
+				// 		let vv = v[nn];
 						
-						if(ii == vkeys.length - 1){
-							f += nn + ": " + vv;
+				// 		if(ii == vkeys.length - 1){
+				// 			f += nn + ": " + vv;
+				// 		}
+				// 		else{
+				// 			f += nn + ": " + vv + ", ";
+				// 		}
+				// 	}
+				// 	f += "<br>";
+
+				// }
+				// output = f;
+					
+				var okeysTempDB = Object.keys(tempDB);
+				var stringedItem = String(item);
+				var resultNames = [];
+				var flag = false;
+				//selecting the whole thing
+				for(var i = 0; i<okeysTempDB.length; i++){
+
+					//selecting each names
+					for(var q = 0; q<okeysTempDB[i].length; q++){
+						var sliced = okeysTempDB[i].split(" ");
+
+						//selecting each words
+						for(var z = 0; z < sliced.length; z++){
+							if(sliced[z] == item){
+								resultNames.push(okeysTempDB[i]);
+								flag = true;
+								break
+							}
 						}
-						else{
-							f += nn + ": " + vv + ", ";
+						if(flag == true){
+							flag = false;
+							break
 						}
 					}
-					f += "<br>";
-
 				}
-				output = f;
-				console.log(f);
-				console.log(output);
+
+				//output = resultNames;
+				
+				var finalJSON = {
+
+				};
+
+				for(let i = 0; i < resultNames.length; i++){
+					let name = resultNames[i];
+					let price = tempDB[name]["Price"];
+					let thumb = tempDB[name]["Thumbnail"];
+					finalJSON[name] = {
+						"Price" : price,
+						"Thumbnail" : thumb
+					};
+				
+				}
+
+				
+
+				let stringedFormat = JSON.stringify(finalJSON, null, 2);
+				console.log(stringedFormat);
+				fs.writeFileSync(tempSearchFile, stringedFormat, (err)=>{
+					console.log(err);
+				});
+				output = "Success";
+				r = resultNames;
+				consoleLogFunc("Search " + item, r);
+
+				// console.log(f);
+				// console.log(output);
 				break
 			case 1:
 				selection = "Walmart";
@@ -167,7 +225,7 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 	catch(e){
 		console.log(e);
 		consoleLog[getTime()] = "INVALID NUMBER ERROR:" + e; 
-		consoleLogFunc(false, "INVALID NUMBER", e);
+		consoleLogFunc( "INVALID NUMBER", e, false);
 		output = "error";
 
 	}
