@@ -227,7 +227,7 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 	catch(e){
 		console.log(e);
 		consoleLog[getTime()] = "INVALID NUMBER ERROR:" + e; 
-		consoleLogFunc( "INVALID NUMBER", e, false);
+		consoleLogFunc( "INVALID NUMBER", e);
 		output = "error";
 
 	}
@@ -250,7 +250,7 @@ app.get('/titleNum',(req,res)=>{
 	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
 	let namelit = Object.keys(tempSearch);
 	//consoleLog[getTime()] = "Requested TitleNumber" + "; Returned " + namelit.length;
-	consoleLogFunc(false, "Title Number", namelit.length);
+	consoleLogFunc( "Title Number", namelit.length);
 	res.send(String(namelit.length));
 });
 
@@ -261,7 +261,7 @@ app.get('/titleNum/:Num', (req,res)=>{
 
 	let namelit = Object.keys(tempSearch);
 	let tValue = namelit[num];
-	consoleLogFunc(false, "Title",tValue);
+	consoleLogFunc("Title",tValue);
 	res.send(tValue);
 
 
@@ -283,7 +283,7 @@ function getPrice(a){
 	let pricelit = Object.keys(tempSearch);
 	let tValue = pricelit[a];
 	let tPrice = tempSearch[tValue].Price;
-	consoleLogFunc(false, "Price", tPrice);
+	consoleLogFunc("Price", tPrice);
 	return tPrice
 }
 
@@ -301,7 +301,7 @@ function getThumb(a){
 	let thumblit = Object.keys(tempSearch);
 	let tValue = thumblit[a];
 	let tThumb = tempSearch[tValue].Thumbnail;
-	consoleLogFunc(false, "Thumbnails", tThumb);
+	consoleLogFunc("Thumbnails", tThumb);
 	return tThumb
 }
 
