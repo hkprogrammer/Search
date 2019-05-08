@@ -63,6 +63,51 @@
       "Circuit Pen":{  
          "Price":"12.99",
          "Thumbnail":"https://dj8a12g4tkdh0.cloudfront.net/catalog/product/cache/6d3beb02b0f9dc392bf1311d767ddcb7/g/l/glitter_gel_pen_bright_1.jpg"
+      },
+      "Kindle Tablet":{  
+         "Price":"39.99",
+         "Thumbnail":"https://images-na.ssl-images-amazon.com/images/I/61yFBIlsyOL._SX569_.jpg"
+      },
+      "Mesh Sport Shirt[Black]":{  
+         "Price":"10.99",
+         "Thumbnail":"https://rendering.documents.cimpress.io/v1/vp/preview?scene=https://scene.products.cimpress.io/v1/scenes/0a4e5dea-bb5e-4ace-bf07-33decf1c266f&width=690&height=690&quality=80"
+      },
+      "Koloa Surf Co Shirt[Blue]":{  
+         "Price":"12.59",
+         "Thumbnail":"https://cdn1.bigcommerce.com/n-63unu/3wk2r/products/116/images/5959/aquatic-blue-fw__95305.1483510323.450.800.jpg?c=2"
+      },
+      "Long Sleeve Shirt [Purple]":{  
+         "Price":"5.99",
+         "Thumbnail":"https://gloimg.rglcdn.com/rosegal/pdm-product-pic/Clothing/2018/09/28/goods-img/1546624739186280208.jpg"
+      },
+      "Paw Patrol On a Roll Nintendo Switch Game":{  
+         "Price":"29.99",
+         "Thumbnail":"https://i5.walmartimages.com/asr/5d62e91a-31a6-4958-9cf1-f1a656cb26e4_1.abd3384e73ac23c19a2e363445784308.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+      },
+      "Super Mario Maker 2 Nintendo Switch":{  
+         "Price":"29.99",
+         "Thumbnail":"https://media.nintendo.com/nintendo/bin/ziAnf6YyojZoptsGwDPOu9K0Hi7uJmGr/BcHxp3-dp6wPwQ9r2bG3FneHHVW9NjkJ.png"
+      },
+      "Pokemon Pikachu Nintendo Switch Game":{  
+         "Price":"29.99",
+         "Thumbnail":"https://www.nintendo.com/content/dam/noa/en_US/games/switch/p/pokemon-lets-go-pikachu-switch/Switch_Pokemon_Lets_Go_Pikachu_box_2.png"
+      },
+      "Fortnite Nintendo Switch Game":{  
+         "Price":"29.99",
+         "Thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Pn-fl5xQUlTu9GpdQUVCcp2q_W5bJg8lo57yP2RcZgYtxI03Jv2xYAAKvyIo_6KJPiA"
+      },
+      "Minecraft PC Java Edition":{  
+         "Price":"25.99",
+         "Thumbnail":"https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/1d/27/b4/1d27b43c-b1d0-acc9-a4b6-4413e48f1a7b/AppIcon-0-1x_U007emarketing-0-85-220-9.png/246x0w.jpg"
+      },
+      "Jump Rope Mat":{  
+         "Price":"4.55",
+         "Thumbnail":"https://cdn.shopify.com/s/files/1/1142/3440/products/Mat-Rolled_1024x1024.jpg?v=1517354350"
+      },
+      "Supreme Mat":{  
+         "Price":"100",
+         "Thumbnail":"https://stockx.imgix.net/products/streetwear/Supreme-Everlast-Folding-Exercise-Mat-Red.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1538080256"
       }
+   
    }
 }

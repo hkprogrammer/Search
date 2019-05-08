@@ -166,10 +166,12 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 					//selecting each names
 					for(var q = 0; q<okeysTempDB[i].length; q++){
 						var sliced = okeysTempDB[i].split(" ");
-
+						
 						//selecting each words
 						for(var z = 0; z < sliced.length; z++){
-							if(sliced[z] == item){
+							 let s = sliced[z].toUpperCase();
+							 item = item.toUpperCase();
+							if(s == item){
 								resultNames.push(okeysTempDB[i]);
 								flag = true;
 								break
@@ -230,7 +232,7 @@ app.get('/Search/:Num/:Item', (request,response) =>{
 
 	}
 	tempSearch = JSON.parse(fs.readFileSync(tempSearchFile))
-	response.send(output);
+	response.send(output + "<br>" + JSON.stringify(finalJSON));
 
 
 
